@@ -1,0 +1,2 @@
+class CultivarsController < ApplicationController
+end
