@@ -1,0 +1,28 @@
+<h1>Listing Cultivars</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    
+    <% @cultivars.each do |cultivar| %>
+      <tr>
+
+        <td><%= link_to cultivar.name, cultivar %></td>
+           
+            <% if cultivar.availability == "on-sale" %>
+                <td><%= link_to "on-sale", sales_path %></td>
+            <% else %>
+                <td> <%= cultivar.availability %></td>
+            <% end %>
+        
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<br>

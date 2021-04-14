@@ -1,0 +1,15 @@
+<% if !@user.nil?%>
+    <%= @user.name%> has total <%= pluralize(@sales.count, 'sale')%>.  
+<% elsif !@cultivar.nil?%>
+    <%= @cultivar.name%> has total <%= pluralize(@sales.count, 'sale')%>.
+<% else %>
+    All sales:
+<% end %>
+<ul>
+    <% @sales.each do |sale| %>
+        <li><%= link_to sale.cultivar.name, sale%> - seller: <%= sale.user.name%>
+            
+    <% end%>
+</ul>
+
+

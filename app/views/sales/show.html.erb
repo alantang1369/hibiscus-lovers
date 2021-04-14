@@ -1,0 +1,9 @@
+Cultivar: <%= @sale.cultivar.name%><br>
+Seller: <%= @sale.user.name %> <br>
+Available Seed: <%= @sale.available_seed%>
+Seed Price: <%= @sale.seed_price %>
+<%= form_tag sale_orders_path(@sale), method: "post" do %>
+    <%= number_field_tag "order[seed_amount]"%>
+    <%= submit_tag "Buy Seed" %>
+<% end %>
+<%= link_to "Edit", edit_sale_path(@sale)%>

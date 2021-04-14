@@ -1,0 +1,9 @@
+<h1>Name:<%= @cultivar.name%></h1>
+Status:<%= @cultivar.availability%> <br>
+<% if @cultivar.availability == "on-sale"%>
+<%= link_to "Go to sales", cultivar_sales_path(@cultivar)%>
+<%end>
+<p>Description:<%= @cultivar.description%></p>
+
+<%= link_to "Create new sale", new_cultivar_sale_path(@cultivar)%>
+<%= link_to 'Back', cultivars_path %>

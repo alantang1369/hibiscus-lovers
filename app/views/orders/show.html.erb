@@ -1,0 +1,8 @@
+Review Order
+Order Number:#<%= @order.id%> <br>
+Cultivar:<%= @order.sale.cultivar.name%> <br>
+Seller:<%= @order.sale.user.name%> <br>
+Seed Amount: <%= @order.seed_amount%> <br>
+Total: <%= @order.total %>
+
+<%= button_to "Confirm Order", confirm_order_path(@order)%>

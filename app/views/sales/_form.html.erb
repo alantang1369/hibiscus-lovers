@@ -1,0 +1,32 @@
+<%= form_for @sale do |f| %>
+    <% if @sale.errors.any? %>
+      <div id="error_explanation">
+        <h2>
+          <%= pluralize(@sale.errors.count, "error") %> prohibited this sale from being saved:
+        </h2>
+  
+        <ul>
+        <% @sale.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    Seller: <%= current_user.name%><br>
+    <%= f.hidden_field :user_id, value: current_user.id %>
+    <% if @sale.cultivar.nil?%>
+        <%= f.text_field :cultivar_name, list: "cultivars_list" %>
+        <datalist id="cultivars_list">
+          <% Cultivar.all.each do |cultivar| %>
+            <option value="<%= cultivar.name %>">
+          <% end %>
+        </datalist>
+    <% else %>
+        <%= f.hidden_field :cultivar_id %>
+    <%end%>
+    <%= f.text_field :available_seed %>
+    <%= f.text_field :seed_price %>
+    <%= f.submit, value: "Create Sale" %>
+
+<%end%>    
