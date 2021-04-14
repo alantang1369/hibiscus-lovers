@@ -10,13 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_06_053138) do
+ActiveRecord::Schema.define(version: 2021_04_08_213941) do
 
   create_table "cultivars", force: :cascade do |t|
     t.string "name"
     t.string "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "status", default: "out-of-stock"
   end
 
   create_table "orders", force: :cascade do |t|
