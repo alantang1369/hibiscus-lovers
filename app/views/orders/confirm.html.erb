@@ -1,0 +1,24 @@
+Review Order <br>
+
+Cultivar:<%= @sale.cultivar.name%> <br>
+Seller:<%= @sale.user.name%> <br>
+<%= form_for @order, url: sale_order_path(@sale, @order), method: :patch do |f| %>
+    
+    <%= f.hidden_field :id, value: @order.id %>
+    <%= f.hidden_field :sale_id, value: @sale.id %>
+    <%= f.hidden_field :user_id, value: current_user.id%> <br>
+    Seed amount:<%= f.number_field :seed_amount%> <br>
+    
+    <%= f.hidden_field :total %>
+    
+    <%= f.submit "Update Order" %>
+<% end %>
+<h3>Total: $<%= @order.total%></h3>
+<%= form_for @order, url: sale_order_path(@sale), method: :delete do |f| %>
+    <%= f.hidden_field :id, value: @order.id %>
+    <%= f.submit "Delete Order"%>
+<%end%>
+<%= form_for @order, url: place_order_path(@sale), method: :post do |f| %>
+    <%= f.hidden_field :id, value: @order.id %>
+    <%= f.submit "Confirm Order"%>
+<%end%>
