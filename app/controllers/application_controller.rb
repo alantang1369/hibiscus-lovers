@@ -1,10 +1,10 @@
 class ApplicationController < ActionController::Base
     protect_from_forgery with: :exception
   before_action :verified_user
-  helper_method :current_user
+  helper_method :current_user, :user_is_current_user, :admin?
   
   
-  private
+  #private
 
 
   def verified_user
@@ -18,4 +18,13 @@ class ApplicationController < ActionController::Base
   def current_user
     User.find_by(id: session[:user_id])
   end
+
+  def user_is_current_user(user)
+    true if user.id == current_user.id
+  end
+
+  def admin?
+    current_user.admin
+  end
+  
 end

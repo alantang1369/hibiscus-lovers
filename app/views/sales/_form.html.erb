@@ -16,7 +16,8 @@
     Seller: <%= current_user.name%><br>
     <%= f.hidden_field :user_id, value: current_user.id %>
     <% if @sale.cultivar.nil?%>
-        <%= f.text_field :cultivar_name, list: "cultivars_list" %>
+    <%= f.label :cultivar_name %>
+    <%= f.text_field :cultivar_name, list: "cultivars_list" %>
         <datalist id="cultivars_list">
           <% Cultivar.all.each do |cultivar| %>
             <option value="<%= cultivar.name %>">
@@ -24,9 +25,12 @@
         </datalist>
     <% else %>
         <%= f.hidden_field :cultivar_id %>
-    <%end%>
-    <%= f.text_field :available_seed %>
-    <%= f.text_field :seed_price %>
-    <%= f.submit, value: "Create Sale" %>
+        Cultivar: <%= @sale.cultivar.name%>
+    <%end%><br>
+    <%= f.label :available_seed%>
+    <%= f.number_field :available_seed %> <br>
+    <%= f.label :seed_price%>($)
+    <%= f.number_field :seed_price %><br>
+    <%= f.submit %>
 
 <%end%>    

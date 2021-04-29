@@ -1,11 +1,11 @@
 <%= form_tag('/session', method: :post) do %>
 
-    <div class="form-group">
+    <div class="field">
       <%= label_tag "user[name]", "Your name:" %>
       <%= text_field_tag "user[name]"%>
     </div>
   
-    <div class="form-group">
+    <div class="field">
       <%= label_tag("user[password]", "Your password:") %>
       <%= password_field_tag "user[password]" %>
     </div>
@@ -14,4 +14,6 @@
       <%= submit_tag("Log In") %>
     </div>
   
-  <% end %> 
+<% end %> 
+Or <br>
+<%= link_to('Log in with github!', '/auth/github', method: :post) %>

@@ -48,3 +48,20 @@ body {
   height: 290px;
   text-align: left;
 }
+
+h3 {
+  display: inline;
+}
+
+.field_with_errors {
+  padding: 2px;
+  background-color: red;
+  display: inline-block;
+}
+
+.alert {
+  color: rgb(138, 4, 4);
+  background: grey;
+  font-size: 1.5em;
+  text-align: center
+}

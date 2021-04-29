@@ -10,9 +10,11 @@
     <p><strong>Address:</strong> <%= @user.address %></p>
     <p><strong>Email:</strong>  <%= @user.email %></p>
     <p><strong>Wallet:</strong> $<%= @user.wallet %> </p>
-    <p><%= link_to "See #{@user.name}'s Sales", user_sales_path(@user) %></p>
-    <p><%= link_to "New Sale", new_user_sale_path(@user) if @user.id == current_user.id %></p>
-    <%= button_to "Edit", edit_user_path(@user), method: 'get' %>
-    <%= button_to "Log Out", session_path, method: "delete" %>
+    <p><%= link_to "#{@user.name}'s Sale(s)", user_sales_path(@user)%>
+       <%= link_to "New Sale",  new_user_sale_path(@user) if user_is_current_user(@user) %>
+    </p>
+    <p><%= link_to "#{@user.name}'s order(s)", user_orders_path(@user) if user_is_current_user(@user) || admin? %> </p>
+    <%= button_to "Edit", edit_user_path(@user), method: 'get' if user_is_current_user(@user)%>
+    
   </div>
 </div> 

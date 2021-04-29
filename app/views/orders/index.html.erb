@@ -1,0 +1,10 @@
+<%= @user.name%> has total <%= pluralize(@orders.count, "order")%>
+<ul>
+<% @orders.each do |order| %>
+    <li>
+        <%= order.created_at%><br>
+        <%= order.sale.cultivar.name %>
+        ( <%= link_to "Order Details", user_order_path(@user, order)%> )
+    </li>
+<% end %>
+</ul>

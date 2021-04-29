@@ -12,38 +12,38 @@
         </ul>
       </div>
     <% end %>
-  
-    <div class="form-group">
+   
+    <div class="field <%= ' field_with_errors' if @user.errors[:name].any? %>">
       <%= f.label :name %>
       <br>
       <%= f.text_field :name, class: "form-control" %>
     </div>
   
-    <div class="form-group">
+    <div class="field">
       <%= f.label :password %>
       <br>
       <%= f.password_field :password, class: "form-control" %>
     </div>
   
-    <div class="form-group">
+    <div class="field">
       <%= f.label :wallet, "How much money do you want to deposit?" %>
       <br>
       <%= f.number_field :wallet, class: "form-control" %>
     </div>
   
-    <div class="form-group">
+    <div class="field">
       <%= f.label :address %>
       <br>
       <%= f.text_field :address, class: "form-control" %>
     </div>
   
-    <div class="form-group">
+    <div class="field">
       <%= f.label :email %>
       <br>
-      <%= f.text_field :email, class: "form-control" %>
+      <%= f.email_field :email, class: "form-control" %>
     </div>
   
-    <div class="form-group">
+    <div class="field">
       <%= f.label :admin, "Check box if you are the admin" %>
       <%= f.check_box :admin, class: "form-check-input" %>
     </div>

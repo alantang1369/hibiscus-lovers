@@ -1,5 +1,8 @@
 <% if !@user.nil?%>
-    <%= @user.name%> has total <%= pluralize(@sales.count, 'sale')%>.  
+    <%= @user.name%> has total <%= pluralize(@sales.count, 'sale')%>.
+    <% if user_is_current_user(@user)%>
+    <%= link_to "New Sale", new_user_sale_path(@user)%>  
+    <% end %>
 <% elsif !@cultivar.nil?%>
     <%= @cultivar.name%> has total <%= pluralize(@sales.count, 'sale')%>.
 <% else %>
@@ -7,8 +10,10 @@
 <% end %>
 <ul>
     <% @sales.each do |sale| %>
-        <li><%= link_to sale.cultivar.name, sale%> - seller: <%= sale.user.name%>
-            
+        <li><%= link_to sale.cultivar.name, user_sale_path(current_user, sale)%> - seller: <%= sale.user.name%>
+        <% if @user && user_is_current_user(@user)%>    
+        <%= link_to " (Delete)", user_sale_path(current_user, sale), method: "delete"%>
+        <%end%>
     <% end%>
 </ul>
 

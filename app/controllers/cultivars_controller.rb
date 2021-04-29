@@ -9,9 +9,13 @@ class CultivarsController < ApplicationController
     end
 
     def edit 
+        @cultivar = Cultivar.find_by(id: params[:id])
     end
 
     def update
+        @cultivar = Cultivar.find_by(id: params[:id])
+        @cultivar.update(description: params[:cultivar][:description])
+        redirect_to @cultivar
     end 
      
     def destroy 

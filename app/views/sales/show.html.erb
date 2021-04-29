@@ -1,9 +1,14 @@
-Cultivar: <%= @sale.cultivar.name%><br>
-Seller: <%= @sale.user.name %> <br>
-Available Seed: <%= @sale.available_seed%>
-Seed Price: <%= @sale.seed_price %>
-<%= form_tag sale_orders_path(@sale), method: "post" do %>
+Cultivar: <%= link_to @sale.cultivar.name, cultivar_path(@sale.cultivar)%><br>
+Seller: <%= link_to @sale.user.name, user_sales_path(@sale.user) %> <br>
+Available Seed(s): <%= @sale.available_seed%><br>
+Seed Price: $<%= @sale.seed_price %> each
+<% if @sale.user.id != current_user.id %>
+<%= form_tag sale_orders_path(@sale), method: "post " do %>
+    <%= hidden_field_tag "order[sale_id]", value= @sale.id%>
+    <%= hidden_field_tag "order[user_id]", value= current_user.id%>
+    Please enter the amount of seed you want to buy:<br>
     <%= number_field_tag "order[seed_amount]"%>
     <%= submit_tag "Buy Seed" %>
 <% end %>
+<%end%><br>
 <%= link_to "Edit", edit_sale_path(@sale)%>

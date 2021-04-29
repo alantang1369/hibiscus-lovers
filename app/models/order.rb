@@ -1,11 +1,16 @@
 class Order < ApplicationRecord
     belongs_to :sale
+    belongs_to :user
 
     def place_order
-        current_user.wallet -= self.total
-        current_user.save
+        user.wallet -= self.total
+        user.save
+        self.sale.user.wallet += self.total
+        self.sale.user.save
         self.sale.available_seed -= self.seed_amount
-        sale.save
+        self.sale.save
+        self.update(confirm: true)
+        
     end
 
 end

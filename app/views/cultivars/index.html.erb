@@ -16,7 +16,7 @@
         <td><%= link_to cultivar.name, cultivar %></td>
            
             <% if cultivar.availability == "on-sale" %>
-                <td><%= link_to "on-sale", sales_path %></td>
+                <td><%= link_to "on-sale", cultivar_sales_path(cultivar) %></td>
             <% else %>
                 <td> <%= cultivar.availability %></td>
             <% end %>

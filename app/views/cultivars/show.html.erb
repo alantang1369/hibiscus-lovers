@@ -1,9 +1,20 @@
 <h1>Name:<%= @cultivar.name%></h1>
-Status:<%= @cultivar.availability%> <br>
-<% if @cultivar.availability == "on-sale"%>
-<%= link_to "Go to sales", cultivar_sales_path(@cultivar)%>
-<%end>
-<p>Description:<%= @cultivar.description%></p>
+<h3>Status:</h3> <%= @cultivar.availability%> 
 
+<% if @cultivar.availability == "on-sale"%>
+<%= link_to "(Go to sales)", cultivar_sales_path(@cultivar)%>
+<%end%>
+
+<p> <h3>Description:</h3>
+                <% if  @cultivar.description.nil? %>
+                    <%= form_tag  cultivar_path(@cultivar), method: 'patch' do %>
+                        <%= text_area_tag "cultivar[description]", nil, rows: 10, cols: 50 %>
+                        <%= submit_tag "Add"%>
+                    <% end%>
+                <% else%>
+                    <%= @cultivar.description%>
+                    <%= link_to "Edit", edit_cultivar_path(@cultivar)%>
+                <%end%>
+</p>
 <%= link_to "Create new sale", new_cultivar_sale_path(@cultivar)%>
 <%= link_to 'Back', cultivars_path %>
