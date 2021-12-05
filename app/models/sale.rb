@@ -8,7 +8,7 @@ class Sale < ApplicationRecord
     def cultivar_name= (name)
         self.cultivar = Cultivar.find_or_create_by(name: name) if !name.blank?
     end
-
+ 
     def cultivar_name
         self.cultivar ? self.cultivar.name : nil
     end

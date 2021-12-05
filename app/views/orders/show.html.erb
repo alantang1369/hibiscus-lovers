@@ -7,7 +7,7 @@
                         <%else%>
                         <%= "Incompleted"%>
                                 <%= link_to "(Continue on your order)", confirm_order_path(@order.sale, @order)%>
-                                <%= link_to "Delete Order", sale_order_path(@order.sale), method: 'delete'%>
+                                <%= link_to "(Delete Order)", sale_order_path(@order.sale), method: 'delete'%>
                         <%end%><br>
                 Cultivar:<%= @order.sale.cultivar.name%> <br>
                 Seller:<%= @order.sale.user.name%> <br>

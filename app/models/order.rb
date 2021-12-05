@@ -13,4 +13,8 @@ class Order < ApplicationRecord
         
     end
 
+    def self.user_orders(user)
+        where(user_id: user.id)
+    end
+
 end

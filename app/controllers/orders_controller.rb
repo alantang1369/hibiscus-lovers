@@ -3,9 +3,9 @@ class OrdersController < ApplicationController
     before_action :order_status_check, only:[:confirm]
     skip_before_action :verify_authenticity_token
     def index
-
-        @orders = Order.where(user_id: params[:user_id]).order(created_at: :desc)
         @user = User.find(params[:user_id])
+        @orders = Order.user_orders(@user).order(created_at: :desc)
+        
     end 
 
     def create

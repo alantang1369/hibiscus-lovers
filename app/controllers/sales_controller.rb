@@ -14,7 +14,7 @@ class SalesController < ApplicationController
     def new
         @sale = Sale.new(cultivar_id: params[:cultivar_id])
     end 
- 
+  
     def create 
         @sale = Sale.new(sale_params)
         if @sale.save
@@ -34,7 +34,7 @@ class SalesController < ApplicationController
             if @cultivar.nil?
               redirect_to cultivars_path, alert: "Cultivar not found."
             else
-              @sale = cultivar.sales.find_by(id: params[:id])
+              @sale = @cultivar.sales.find_by(id: params[:id])
               redirect_to cultivar_sales_path(cultivar), alert: "Sale not found." if @sale.nil?
             end
         else
@@ -58,7 +58,7 @@ class SalesController < ApplicationController
     end
 
 
-    private 
+    private
 
     def sale_params 
         params.require(:sale).permit(

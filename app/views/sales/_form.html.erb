@@ -23,10 +23,11 @@
             <option value="<%= cultivar.name %>">
           <% end %>
         </datalist>
-    <% else %>
+    <% else %> 
         <%= f.hidden_field :cultivar_id %>
         Cultivar: <%= @sale.cultivar.name%>
     <%end%><br>
+   
     <%= f.label :available_seed%>
     <%= f.number_field :available_seed %> <br>
     <%= f.label :seed_price%>($)

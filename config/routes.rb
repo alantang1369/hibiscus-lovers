@@ -23,4 +23,6 @@ Rails.application.routes.draw do
   end
 
   match '/auth/:provider/callback', to: 'session#create_with_github', via: [:get, :post]  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
+  resources :category, only: [:index, :show]
 end
